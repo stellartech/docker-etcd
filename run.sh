@@ -11,4 +11,8 @@ else
     ip=`ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1`
 fi
 
-/usr/local/bin/etcd --data-dir=/var/etcd -listen-peer-urls "http://$ip:4001,http://$ip:2379"
+/usr/local/bin/etcd \
+	--data-dir=/var/etcd \
+	-name etcd0 \
+	-listen-client-urls "http://0.0.0.0:2379" \
+	-listen-peer-urls http://0.0.0.0:2380 	
