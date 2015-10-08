@@ -1,0 +1,1 @@
+Simple etcd docker definition
